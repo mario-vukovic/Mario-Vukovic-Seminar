@@ -13,7 +13,7 @@
     <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Id</th>
+            <th scope="col">Role</th>
             <th scope="col">Email</th>
             <th scope="col">EmailConfirmed</th>
         </tr>
@@ -24,7 +24,7 @@
         {
             <tr>
                 <th scope="row">@counter</th>
-                <td>@user.Id</td>
+                <td>@user.Role</td>
                 <td>@user.Email</td>
                 <td>@if (user.EmailConfirmed)
                     {
@@ -34,8 +34,6 @@
                     {
                         <input type="checkbox" onclick="return false">
                     }</td>
-                <td>
-                </td>
                 <td> @Html.ActionLink("Details","UserDetails","User",new {id= user.Id},new {@class = "btn btn-primary"})</td>
                 <td> @Html.ActionLink("Edit","UpdateUser","User",new {id= user.Id},new {@class = "btn btn-primary"})</td>
                 <td> @Html.ActionLink("Delete","DeleteUser","User",new {id= user.Id},new {@class = "btn btn-danger"})</td>
