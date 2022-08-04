@@ -1,0 +1,51 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Mario_Vukovic_Seminar.Services.Interface
+@model Mario_Vukovic_Seminar.Models.Binding.ProductBinding
+@inject IProductService productService
+
+@{
+    var productCategory = await productService.GetAllProductCategoriesAsync();
+}
+
+<form action="/Admin/CreateProduct" method="post" enctype="multipart/form-data">
+    
+
+    <div class="form-group">
+        <label asp-for="ProductCategoryId" class="control-label">Choose category</label>
+        <select name="ProductCategoryId" class="form-select" aria-label="Default select example">
+            @foreach (var item in productCategory)
+            {
+                <option value="@item.Id">@item.Title</option>
+            }
+        </select>
+    </div>
+    
+
+
+    <div class="form-group">
+        @Html.LabelFor(x=>x.Name)
+        @Html.TextBoxFor(x=> x.Name, new {@class = "form-control" })
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x=>x.Description)
+        @Html.TextBoxFor(x=> x.Description, new {@class = "form-control", Required = true, placeholder="Unesi opis"  })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x=>x.Quantity)
+        @Html.TextBoxFor(x=> x.Quantity, new {@class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x=>x.Price)
+        @Html.TextBoxFor(x=> x.Price, new {@class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x=>x.ProductImg)
+        <input type="file" name="ProductImg" class="form-control"/>
+    </div>
+
+<input type="submit" class="btn btn-primary mt-5" value="Create">
+</form>
+
+<a class="btn btn-primary" href="@Url.Action("ProductManagement", "Admin")">Back to product managament</a>
+

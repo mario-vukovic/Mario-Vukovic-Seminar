@@ -1,0 +1,26 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Mario_Vukovic_Seminar.Services.Interface
+@model Mario_Vukovic_Seminar.Models.Binding.ProductCategoryBinding
+@inject IProductService productService
+
+@{
+    var productCategory = await productService.GetAllProductCategoriesAsync();
+}
+
+<form action="/Admin/CreateProductCategory" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        @Html.LabelFor(x=>x.Title)
+        @Html.TextBoxFor(x=> x.Title, new {@class = "form-control" })
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x=>x.Description)
+        @Html.TextBoxFor(x=> x.Description, new {@class = "form-control", Required = true, placeholder="Unesi opis"  })
+    </div>
+
+    <input type="submit" class="btn btn-primary mt-5" value="Create">    
+    <br/><br/>
+    <a class="btn btn-primary" href="@Url.Action("ProductCategoryManagament", "Admin")">Back to product category managament</a>
+
+</form>
+

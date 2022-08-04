@@ -1,0 +1,44 @@
+﻿@model List<Mario_Vukovic_Seminar.Models.ViewModel.ProductViewModel>
+@{
+    int counter = 1;
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+            <th scope="col">Details</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var product in Model.OrderBy(x => Guid.NewGuid()).Take(10))
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Description</td>
+                <td>@product.Price €</td>
+                <td>
+                    @if (product.Quantity > 0)
+                    {
+                        <a href="@Url.Action("Details", "Home",new {id = product.Id})" class="btn btn-success">Details</a>
+                    }
+                    else
+                    {
+                        <span>Proizvod nije dostupan</span>
+                    }
+                </td>
+                <td>
+                    <img src="@product.ProductImgUrl" alt="This is where I would place my picture here, if I had one">
+                </td>
+
+            </tr>
+            counter++;
+        }
+
+
+
+    </tbody>
+</table>

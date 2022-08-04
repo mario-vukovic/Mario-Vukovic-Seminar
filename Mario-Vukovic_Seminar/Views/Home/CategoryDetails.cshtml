@@ -1,0 +1,68 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@using Mario_Vukovic_Seminar.Models.Dbo
+@using Mario_Vukovic_Seminar.Services.Interface
+@inject UserManager<ApplicationUser> UserManager
+@inject IProductService productService
+@model Mario_Vukovic_Seminar.Models.ViewModel.CreateProductViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Category
+            </th>
+        
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.Products)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem=> item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem=> item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem=> item.ProductCategory.Title)
+                </td>
+                <td>
+                    <a href="@Url.Action("Details", "Home",new {id = item.Id})" class="btn btn-success">Details</a>
+                </td>
+
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="@Url.Action("Index", "Home")">Back to homepage</a>
+
+}

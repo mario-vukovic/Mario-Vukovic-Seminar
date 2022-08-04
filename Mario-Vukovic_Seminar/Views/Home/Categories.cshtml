@@ -1,0 +1,25 @@
+﻿@model List<Mario_Vukovic_Seminar.Models.ViewModel.ProductCategoryViewModel>
+
+
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var category in Model)
+    {
+        <tr>
+            <td>@category.Title</td>
+            <td>@category.Description</td>
+            <td> @Html.ActionLink("Show all products","CategoryDetails","Home",new {id= category.Id},new {@class = "btn btn-success"})</td>
+
+        </tr>
+
+    }
+    </tbody>
+</table>
+
+<a class="btn btn-primary" href="@Url.Action("Index", "Home")">Back to homepage</a>
