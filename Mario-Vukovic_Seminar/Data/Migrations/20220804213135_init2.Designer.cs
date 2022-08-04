@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Mario_Vukovic_Seminar.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220804205421_roleMigration")]
-    partial class roleMigration
+    [Migration("20220804213135_init2")]
+    partial class init2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -78,9 +78,6 @@ namespace Mario_Vukovic_Seminar.Data.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("RoleId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -101,8 +98,6 @@ namespace Mario_Vukovic_Seminar.Data.Migrations
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.HasIndex("RoleId");
-
                     b.ToTable("AspNetUsers", (string)null);
 
                     b.HasData(
@@ -110,7 +105,7 @@ namespace Mario_Vukovic_Seminar.Data.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e97fa820-c201-4537-9904-e1eee3bb6c41",
+                            ConcurrencyStamp = "b7beea52-394d-4528-8ccf-d8cd6d06af87",
                             Dob = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
@@ -118,9 +113,9 @@ namespace Mario_Vukovic_Seminar.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOtbdXoO2gad8LpP7ZlQ3KtnrEDn2xgnlDmr942JoBmuuH6LRvrpsmJDNCGYlTryFg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELgNz9TqsBTIstNInt92TEuo+W/5X7OOKPD1ZZMir5djpOHLs8OPCRhs0PhsuTKrug==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f6bcc52d-98dc-44a9-8665-4e2ffe48b504",
+                            SecurityStamp = "174d9d22-6d19-4634-8da4-91e55a561a71",
                             TwoFactorEnabled = false,
                             UserName = "admin@admin.com"
                         },
@@ -128,7 +123,7 @@ namespace Mario_Vukovic_Seminar.Data.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8ce7db29-c574-48a0-a0b0-251b58a65e61",
+                            ConcurrencyStamp = "2b0e1164-9616-437b-8b0c-00f85e494d63",
                             Dob = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "user@user.com",
                             EmailConfirmed = true,
@@ -136,9 +131,9 @@ namespace Mario_Vukovic_Seminar.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@USER.COM",
                             NormalizedUserName = "USER@USER.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEE4JSarENvZzLOsaVIog/qcnlzKHh2tQuR8hphnRIyeJhjeSOommmSlL+JP/lHEFAA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKcvsbIWuD1w0nmy8A+FNsb1jpAMLqYy64ojECTgMXoWIf/15nZLXYDn5USzDcnG8Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5166d200-2514-433f-a394-d3d9b89e6572",
+                            SecurityStamp = "57fd48fc-3a5f-4f87-9d14-1eae5503800b",
                             TwoFactorEnabled = false,
                             UserName = "user@user.com"
                         });
@@ -474,28 +469,28 @@ namespace Mario_Vukovic_Seminar.Data.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "5c3219be-c6a6-4f2e-8045-5b4c30597c68",
+                            ConcurrencyStamp = "1d7a4217-e9e1-4881-a033-a7f7ce7f804c",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "7e87acdd-3b1d-43dd-a8f7-431abcd22388",
+                            ConcurrencyStamp = "4965f1a4-d675-4b8a-a53e-d745a513d0ad",
                             Name = "BasicUser",
                             NormalizedName = "BASICUSER"
                         },
                         new
                         {
                             Id = "3",
-                            ConcurrencyStamp = "773f7174-b358-4d95-9344-7860b5f4e2eb",
+                            ConcurrencyStamp = "81a39c0b-6992-4f67-b41c-64ff7032a64c",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         },
                         new
                         {
                             Id = "4",
-                            ConcurrencyStamp = "59375f54-25f9-4ae2-9b01-2574d8e910d5",
+                            ConcurrencyStamp = "4f8941c9-93b4-4207-ad4f-0669932efc16",
                             Name = "Editor",
                             NormalizedName = "EDITOR"
                         });
@@ -621,15 +616,6 @@ namespace Mario_Vukovic_Seminar.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("Mario_Vukovic_Seminar.Models.Dbo.ApplicationUser", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", "Role")
-                        .WithMany()
-                        .HasForeignKey("RoleId");
-
-                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("Mario_Vukovic_Seminar.Models.Dbo.Product", b =>

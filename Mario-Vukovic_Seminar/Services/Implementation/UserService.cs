@@ -29,6 +29,7 @@ namespace Mario_Vukovic_Seminar.Services.Implementation
 
         public async Task<ApplicationUser> CreateUserAsync(ApplicationUserBinding model, string role)
         {
+            
             var findUserByEmail = await userManager.FindByEmailAsync(model.Email);
             if (findUserByEmail != null)
             {
@@ -52,6 +53,7 @@ namespace Mario_Vukovic_Seminar.Services.Implementation
 
         public async Task<ApplicationUser> AddNewUserAsync(ApplicationUserBinding model, string role)
         {
+            
             var findUserByEmail = await userManager.FindByEmailAsync(model.Email);
             if (findUserByEmail != null)
             {

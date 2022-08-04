@@ -25,7 +25,5 @@ namespace Mario_Vukovic_Seminar.Models.Dbo
                 }
             }
         }
-
-
     }
 }
