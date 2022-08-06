@@ -1,13 +1,4 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-@model Mario_Vukovic_Seminar.Models.Binding.ApplicationUserBinding
-
-@{
-    ViewData["Title"] = "Registration";
-}
+﻿@model Mario_Vukovic_Seminar.Models.Binding.ApplicationUserBinding
 
 <h1>Registration</h1>
 
@@ -43,15 +34,12 @@
                 <input asp-for="Dob" class="form-control" />
                 <span asp-validation-for="Dob" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Register" class="btn btn-primary" /> | <a class="btn btn-primary" href="@Url.Action("Index", "Home")">Back to homepage</a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

@@ -1,50 +1,45 @@
-﻿@using Mario_Vukovic_Seminar.Services.Interface
-@model Mario_Vukovic_Seminar.Models.Binding.ApplicationUserUpdateBinding
-@inject IUserService UserService
-@{
-}
+﻿@model Mario_Vukovic_Seminar.Models.Binding.ApplicationUserUpdateBinding
 
-<h1>Update user</h1>
+<h1>Update user @Model.Email</h1>
+<hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-controller="User" asp-action="UpdateUser">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
+                @Html.LabelFor(x=>x.Email)
+                @Html.TextBoxFor(x=>  x.Email , new {@class = "form-control" })
             </div>
             <div class="form-group">
-                <label asp-for="Password" class="control-label">New password</label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FirstName" class="control-label"></label>
-                <input asp-for="FirstName" class="form-control" />
-                <span asp-validation-for="FirstName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LastName" class="control-label"></label>
-                <input asp-for="LastName" class="form-control" />
-                <span asp-validation-for="LastName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(x=>x.Dob)
-                @Html.TextBoxFor(x=>  x.Dob , new {@class = "form-control" })
-            </div>
-            <div class="form-group">
-                
                 @Html.LabelFor(x=>x.EmailConfirmed)
                 @Html.CheckBoxFor(x=>  x.EmailConfirmed)
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                @Html.LabelFor(x=>x.Password)
+                @Html.TextBoxFor(x=>  x.Password , new {@class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x=>x.Role)
+                @Html.TextBoxFor(x=>  x.Role , new {@class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x=>x.FirstName)
+                @Html.TextBoxFor(x=>  x.FirstName , new {@class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x=>x.LastName)
+                @Html.TextBoxFor(x=>  x.LastName , new {@class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label asp-for="Dob" class="control-label"></label>
+                <input asp-for="Dob" class="form-control" />
+                <span asp-validation-for="Dob" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" /> | <a class="btn btn-primary" href="@Url.Action("UserManagement", "User")">Back to user list</a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-controller="User" , asp-action="UserManagement">Back to user list</a>
 </div>

@@ -1,12 +1,8 @@
-﻿@using Microsoft.AspNetCore.Identity
-@using Mario_Vukovic_Seminar.Models.Dbo
-@model List<Mario_Vukovic_Seminar.Models.ViewModel.ApplicationUserViewModel>
-@inject UserManager<ApplicationUser> UserManager
-@inject RoleManager<IdentityRole> RoleManager
+﻿@model List<Mario_Vukovic_Seminar.Models.ViewModel.ApplicationUserViewModel>
 @{
     int counter = 1;
-
 }
+
 <a class="btn btn-primary" href="@Url.Action("CreateUser", "User")">Add new user</a>
 
 <table class="table table-striped">
@@ -16,6 +12,10 @@
             <th scope="col">Role</th>
             <th scope="col">Email</th>
             <th scope="col">EmailConfirmed</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+
         </tr>
     </thead>
     <tbody>
@@ -26,15 +26,17 @@
                 <th scope="row">@counter</th>
                 <td>@user.Role</td>
                 <td>@user.Email</td>
-                <td>@if (user.EmailConfirmed)
+                <td>
+                    @if (user.EmailConfirmed)
                     {
                         <input type="checkbox" onclick="return false" checked>
                     }
                     else
                     {
                         <input type="checkbox" onclick="return false">
-                    }</td>
-                <td> @Html.ActionLink("Details","UserDetails","User",new {id= user.Id},new {@class = "btn btn-primary"})</td>
+                    }
+                </td>
+                <td> @Html.ActionLink("Details","UserDetails","User",new {id= user.Id},new {@class = "btn btn-success"})</td>
                 <td> @Html.ActionLink("Edit","UpdateUser","User",new {id= user.Id},new {@class = "btn btn-primary"})</td>
                 <td> @Html.ActionLink("Delete","DeleteUser","User",new {id= user.Id},new {@class = "btn btn-danger"})</td>
             </tr>

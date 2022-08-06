@@ -1,21 +1,16 @@
-﻿@using Microsoft.AspNetCore.Identity
-@using Microsoft.AspNetCore.Mvc.TagHelpers
-@using Mario_Vukovic_Seminar.Models.Dbo
-@using Mario_Vukovic_Seminar.Services.Interface
-@inject UserManager<ApplicationUser> UserManager
-@inject IProductService productService
-@model Mario_Vukovic_Seminar.Models.ViewModel.ProductViewModel
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    var user = await UserManager.GetUserAsync(User);
-}
+﻿@model Mario_Vukovic_Seminar.Models.ViewModel.ProductViewModel
+
+<h1>@Model.Name</h1>
+
+<dd>
+    <img src="@Model.ProductImgUrl">
+</dd>
 
 @using (Html.BeginForm())
 {
-    <h1>Proizvod</h1>
     <input type="text" readonly hidden value="@Model.Id" name="ProductId">
     <div>
-        <h4>Detalji</h4>
+        <h4>Details</h4>
         <hr />
         <dl class="row">
             <dt class="col-sm-2">
@@ -46,13 +41,9 @@
                 @Html.DisplayNameFor(model => model.Price)
             </dt>
             <dd class="col-sm-10">
-                @Html.TextBoxFor(model => model.Price,new {@readonly = true, @class = "form-control readonly"})
-            </dd>
-            <dd>
-                <img src="@Model.ProductImgUrl">
+                @Html.DisplayFor(model => model.Price)
             </dd>
         </dl>
-
         <a class="btn btn-primary" href="@Url.Action("ProductManagement", "Admin")">Back to product managament</a>
     </div>
 

@@ -1,34 +1,15 @@
-﻿@using Microsoft.AspNetCore.Identity
-@using Microsoft.AspNetCore.Mvc.TagHelpers
-@using Mario_Vukovic_Seminar.Models.Dbo
-@using Mario_Vukovic_Seminar.Services.Interface
-@inject UserManager<ApplicationUser> UserManager
-@inject IProductService productService
-@model Mario_Vukovic_Seminar.Models.ViewModel.ProductViewModel
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    var user = await UserManager.GetUserAsync(User);
-}
+﻿@model Mario_Vukovic_Seminar.Models.ViewModel.ProductViewModel
 
 <h1>
-    <dd class="col-sm-10">
-        @Html.DisplayFor(model => model.Name)
-    </dd>
+    @Html.DisplayFor(model => model.Name)
 </h1>
-<h4><dd class="col-sm-10">
-    @Html.DisplayFor(model =>  model.ProductCategory.Title)
-</dd></h4>
+
 <dd>
     <img src="@Model.ProductImgUrl">
 </dd>
 
-<a class="btn btn-primary" href="@Url.Action("CategoryDetails", "Home", new {id= Model.ProductCategory.Id})">View all @Html.DisplayFor(model =>  model.ProductCategory.Title)</a>
-
-<br><br/>
-
 @using (Html.BeginForm())
 {
-
     <input type="text" readonly hidden value="@Model.Id" name="ProductId">
     <div>
         <h4>Product details</h4>
@@ -62,11 +43,11 @@
                 @Html.DisplayNameFor(model => model.Price)
             </dt>
             <dd class="col-sm-10">
-                @Html.TextBoxFor(model => model.Price,new {@readonly = true, @class = "form-control readonly"})
+                @Html.DisplayFor(model => model.Price)
             </dd>
         </dl>
 
-        <a class="btn btn-primary" href="@Url.Action("Index", "Home")">Back to homepage</a>
-    </div>
+        <a class="btn btn-primary" href="@Url.Action("Index", "Home")">Back to homepage</a> | <a class="btn btn-primary" href="@Url.Action("CategoryDetails", "Home", new {id= Model.ProductCategory.Id})">View all @Html.DisplayFor(model =>  model.ProductCategory.Title)</a>
 
+    </div>
 }

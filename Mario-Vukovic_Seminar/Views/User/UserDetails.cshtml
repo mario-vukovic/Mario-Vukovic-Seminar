@@ -1,21 +1,9 @@
-﻿@using Microsoft.AspNetCore.Identity
-@using Microsoft.AspNetCore.Mvc.TagHelpers
-@using Mario_Vukovic_Seminar.Models.Dbo
-@using Mario_Vukovic_Seminar.Services.Interface
-@inject UserManager<ApplicationUser> UserManager
-@inject IProductService productService
-@model Mario_Vukovic_Seminar.Models.ViewModel.ApplicationUserViewModel
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    var user = await UserManager.GetUserAsync(User);
-}
+﻿@model Mario_Vukovic_Seminar.Models.ViewModel.ApplicationUserViewModel
 
 @using (Html.BeginForm())
 {
-    <h1>Proizvod</h1>
-    <input type="text" readonly hidden value="@Model.Id" name="UserId">
+    <h1>User details for @Model.Email</h1>
     <div>
-        <h4>Detalji</h4>
         <hr />
         <dl class="row">
             <dt class="col-sm-2">
@@ -24,33 +12,44 @@
             <dd class="col-sm-10">
                 @Html.DisplayFor(model => model.Id)
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Email)
+                    @Html.DisplayNameFor(model => model.Email)
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Email)
+                    @Html.DisplayFor(model => model.Email)
             </dd>
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.FirstName)
+                    @Html.DisplayNameFor(model => model.Password)
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.FirstName)
+                    @Html.DisplayFor(model => model.Password)
             </dd>
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.LastName)
+                    @Html.DisplayNameFor(model => model.Role)
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.LastName)
+                    @Html.DisplayFor(model => model.Role)
             </dd>
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Dob)
+                    @Html.DisplayNameFor(model => model.FirstName)
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Dob)
+                    @Html.DisplayFor(model => model.FirstName)
             </dd>
-
+            <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.LastName)
+            </dt>
+            <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.LastName)
+            </dd>
+            <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Dob)
+            </dt>
+            <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Dob)
+            </dd>
         </dl>
 
-        <a class="btn btn-primary" href="@Url.Action("UserManagement", "User")">Back to product managament</a>
+        <a class="btn btn-primary" href="@Url.Action("UserManagement", "User")">Back to user managament</a>
     </div>
 
 }
