@@ -2,6 +2,7 @@
 using Mario_Vukovic_Seminar.Models.Binding;
 using Mario_Vukovic_Seminar.Models.Dbo;
 using Mario_Vukovic_Seminar.Models.ViewModel;
+using Microsoft.AspNetCore.Identity;
 
 namespace Mario_Vukovic_Seminar.Mapping
 {
@@ -25,13 +26,14 @@ namespace Mario_Vukovic_Seminar.Mapping
             CreateMap<ApplicationUserViewModel, ApplicationUserUpdateBinding>();
             CreateMap<ApplicationUserUpdateBinding, ApplicationUserViewModel>();
             CreateMap<ApplicationUserUpdateBinding, ApplicationUser>();
-            
+
             CreateMap<ApplicationUserBinding, ApplicationUser>()
                 .ForMember(dst => dst.UserName, opts => opts.MapFrom(src => src.Email));
+
             CreateMap<ApplicationUser, ApplicationUserViewModel>();
             CreateMap<ApplicationUserViewModel, ApplicationUser>();
             CreateMap<ApplicationUserViewModel, ApplicationUserBinding>();
-            
+           
             CreateMap<FileStorage, FileStorageViewModel>();
             CreateMap<FileStorage, FileStorageExpendedViewModel>();
             CreateMap<FileStorageViewModel, FileStorage>().
