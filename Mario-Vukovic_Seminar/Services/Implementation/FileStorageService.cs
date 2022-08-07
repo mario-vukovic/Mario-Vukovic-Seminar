@@ -113,7 +113,7 @@ namespace Mario_Vukovic_Seminar.Services.Implementation
                 return null;
             }
 
-            string folderPath = env.ContentRootPath + @"\WebShop\upload\" + fileuploadId;
+            string folderPath = env.ContentRootPath + @"\Seminar\upload\" + fileuploadId;
             Directory.CreateDirectory(folderPath);
             var filePath = Path.Combine(folderPath, file.FileName);
 

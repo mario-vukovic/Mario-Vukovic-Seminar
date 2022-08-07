@@ -25,15 +25,12 @@
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-primary" /> | <a class="btn btn-primary" href="@Url.Action("ProductCategoryManagament", "Admin")">Back to product category managament</a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="ProductCategoryManagament">Back to List</a>
 </div>
 
 @section Scripts {
