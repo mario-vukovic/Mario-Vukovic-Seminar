@@ -9,10 +9,12 @@ To try out simply run the solution, add the initial migration and update the dat
 
 When debugging use preseeded login details below to access the respective user's features:
 
--ADMIN- Gives access to all of the features
+-ADMIN- (Gives access to all of the features)
+
 user: admin@admin.com
 pass: Admin123
 
--USER- Simple demo of the site, can view homepage, products and categories or register a new user yourself.
+-USER- (Simple demo of the site, can view homepage, products and categories or register a new user yourself.)
+
 user: user@user.com
 pass: User123
