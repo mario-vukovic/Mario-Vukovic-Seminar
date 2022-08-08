@@ -50,9 +50,9 @@ namespace Mario_Vukovic_Seminar.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateUser(ApplicationUserBinding model, string role)
+        public async Task<IActionResult> CreateUser(ApplicationUserAdminBinding model, string role)
         {
-            await userService.AddNewUserAsync(model, "BasicUser");
+            await userService.CreateNewUserAsync(model, "BasicUser");
             return RedirectToAction("UserManagement");
         }
 
@@ -65,12 +65,12 @@ namespace Mario_Vukovic_Seminar.Controllers
         public async Task<IActionResult> UpdateUser(string id)
         {
             var user = await userService.GetUserAsync(id);
-            var model = mapper.Map<ApplicationUserUpdateBinding>(user);
-            return View(model);
+            //var model = mapper.Map<ApplicationUserAdminUpdateBinding>(user);
+            return View(user);
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdateUser(ApplicationUserUpdateBinding model)
+        public async Task<IActionResult> UpdateUser(ApplicationUserAdminUpdateBinding model)
         {
             var user = await userService.UpdateUserAsync(model);
             return RedirectToAction("UserManagement");
